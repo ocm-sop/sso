@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: sso
+  namespace: sso
+  annotations:
+    cert-manager.io/cluster-issuer: psi
+    kubernetes.io/ingress.class: haproxy
+    kubernetes.io/tls-acme: 'true'
+    route.openshift.io/termination: reencrypt
+    cert-utils-operator.redhat-cop.io/destinationCA-from-secret: internal-sso-tls
+    cert-utils-operator.redhat-cop.io/certs-from-secret: sso-tls
+  labels:
+    use-dns01-solver: "true"
+spec:
+  rules:
+    - host: sso.apps.openshift-cluster-name.base-domain.tld
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: sso
+              servicePort: https
+  tls:
+    - hosts:
+        - sso.apps.openshift-cluster-name.base-domain.tld
+      secretName: sso-tls

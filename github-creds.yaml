@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: github-creds
+  namespace: sso
+type: Opaque
+data:
+  client-id: TVlHSVRIVUJDTElFTlRJRAo=
+  client-secret: TVlHSVRIVUJDTElFTlRTRUNSRVQK
+  

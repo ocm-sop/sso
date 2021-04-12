@@ -1,0 +1,16 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: sso-route
+  namespace: sso
+spec:
+  host: sso.apps.openshift-cluster-name.base-domain.tld
+  path: /
+  port:
+    targetPort: https
+  to:
+    kind: Service
+    name: sso
+  tls:
+    termination: reencrypt
+    insecureEdgeTerminationPolicy: Redirect

@@ -1,0 +1,62 @@
+issuer: "https://sso.$(OCP_APPS_URL)"
+
+storage:
+  type: kubernetes
+  config:
+    inCluster: true
+
+logger:
+    level: debug
+
+web:
+    http: "0.0.0.0:5556"
+    https: "0.0.0.0:5554"
+    tlsCert: /etc/dex/tls/tls.crt
+    tlsKey: /etc/dex/tls/tls.key
+
+grpc:
+    addr: "0.0.0.0:5557"
+    tlsCert: /etc/dex/tls/tls.crt
+    tlsKey: /etc/dex/tls/tls.key
+    tlsClientCA: /etc/dex/tls/ca.crt
+
+telemetry:
+    http: "0.0.0.0:5558"
+
+expiry:
+  deviceRequests: "5m"  
+  signingKeys: "6h"
+  idTokens: "24h"
+  authRequests: "24h"
+
+frontend:
+    issuer: "Open Cluster Management"
+    logoURL: "https://avatars.githubusercontent.com/u/60207193?s=200&v=4"
+    theme: coreos
+
+oauth2:
+    responseTypes: ["code", "token", "id_token"]
+    skipApprovalScreen: true
+    alwaysShowLoginScreen: false
+    passwordConnector: github
+
+connectors:
+    - type: github
+      id: github
+      name: GitHub
+      config:
+        clientID: $(GITHUB_CLIENT_ID)
+        clientSecret: $(GITHUB_CLIENT_SECRET)
+        redirectURI: "https://sso.apps.$(OCP_APPS_URL)/callback"
+        orgs: 
+            - name: open-cluster-management 
+        loadAllGroups: true
+        teamNameField: slug
+        useLoginAsID: false
+
+staticClients:
+    - id: "$(OCP_CLIENT_ID)"
+      redirectURIs:
+        - "https://oauth-openshift.$(OCP_APPS_URL)/oauth2callback/sso"
+      name: "$(OCP_CLIENT_ID)"
+      secret: "$(OCP_CLIENT_SECRET)"

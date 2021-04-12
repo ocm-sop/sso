@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: ocp-host-cluster-sso-client-creds
+  namespace: openshift-config
+type: Opaque
+data:
+  clientId: TVlPQ1BDTElFTlRJRAo=
+  clientSecret: TVlPQ1BDTElFTlRTRUNSRVQK
