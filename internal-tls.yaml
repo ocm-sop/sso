@@ -17,6 +17,7 @@ spec:
     - sso.svc.cluster.local
     - sso.sso.svc
     - sso.sso.svc.cluster.local
+    - sso.apps.keyring.cicd.red-chesterfield.com
   duration: 720h0m0s
   renewBefore: 168h0m0s
   privateKey:
