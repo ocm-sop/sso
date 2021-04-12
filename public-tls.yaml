@@ -9,8 +9,7 @@ spec:
   secretName: sso-tls
   subject:
     organizations:
-    - open-cluster-management.io
-    - red-chesterfield.com
+    - Open Cluster Management
   usages:
     - server auth
     - client auth
