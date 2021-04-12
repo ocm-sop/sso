@@ -6,6 +6,9 @@ namespace: "sso"
 generatorOptions:
   disableNameSuffixHash: true
 
+bases:
+  - oauth
+  
 configMapGenerator:
 - name: sso-config
   files:
@@ -26,3 +29,4 @@ resources:
   - ingress.yaml
   # - route.yaml
   - https://raw.githubusercontent.com/BetssonGroup/dex-operator/v0.2.0/contrib/charts/dex-operator/crds/crds.yaml
+  - dex-client-deployment.yaml

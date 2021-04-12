@@ -33,7 +33,7 @@ spec:
         command: ["/usr/local/bin/dex", "serve", "/etc/dex/cfg/config.yaml"]
         livenessProbe:
           httpGet:
-            path: /dex/healthz
+            path: /healthz
             port: http
             scheme: HTTP
           timeoutSeconds: 1
@@ -42,7 +42,7 @@ spec:
           failureThreshold: 3
         readinessProbe:
           httpGet:
-            path: /dex/healthz
+            path: /healthz
             port: http
             scheme: HTTP
           timeoutSeconds: 1
