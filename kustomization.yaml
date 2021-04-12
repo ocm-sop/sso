@@ -6,10 +6,10 @@ namespace: "sso"
 generatorOptions:
   disableNameSuffixHash: true
 
-# configMapGenerator:
-# - name: sso-config
-#   files:
-#     - config.yaml
+configMapGenerator:
+- name: sso-config
+  files:
+    - config.yaml
 
 resources:
   - namespace.yaml

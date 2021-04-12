@@ -23,7 +23,6 @@ spec:
     app.kubernetes.io/instance: sso
     app.kubernetes.io/name: sso
     component: server
-  clusterIP: ""
   type: LoadBalancer
   sessionAffinity: None
   externalTrafficPolicy: Cluster
