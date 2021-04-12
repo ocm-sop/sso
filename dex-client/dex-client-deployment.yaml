@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: ReplicaSet
 metadata:
   name: dex-client-controller-manager
+  namespace: sso
   labels:
     app.kubernetes.io/instance: sso
     app.kubernetes.io/name: sso

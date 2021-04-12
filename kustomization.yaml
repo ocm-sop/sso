@@ -1,13 +1,8 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-namespace: "sso"
-
 generatorOptions:
   disableNameSuffixHash: true
-
-bases:
-  - oauth
   
 configMapGenerator:
 - name: sso-config
@@ -27,5 +22,7 @@ resources:
   - service.yaml
   - ingress.yaml
   # - route.yaml
-  - https://raw.githubusercontent.com/BetssonGroup/dex-operator/v0.2.0/contrib/charts/dex-operator/crds/crds.yaml
-  - dex-client-deployment.yaml
+
+bases:
+  - oauth
+  - dex-client
