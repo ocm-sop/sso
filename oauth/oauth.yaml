@@ -1,7 +1,7 @@
 apiVersion: config.openshift.io/v1
 kind: OAuth
 metadata:
-  name: sso-oauth
+  name: cluster
   namespace: openshift-config
 spec:
   identityProviders:
