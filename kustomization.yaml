@@ -21,7 +21,6 @@ resources:
   - internal-tls-secret.yaml
   - internal-tls.yaml
   - github-creds.yaml
-  - ocp-host-cluster-sso-client-creds.yaml
   - sa.yaml
   - rbac.yaml
   - deployment.yaml
