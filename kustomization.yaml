@@ -1,15 +1,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 
-commonLabels:
-    cicd.red-chesterfield.com/name: sso
-    cicd.red-chesterfield.com/component: sso
-    cicd.red-chesterfield.com/layer: security
-
-commonAnnotations:
-    cicd.red-chesterfield.com/managed-by: gitops
-    cicd.red-chesterfield.com/scm-url: git@github.com:ocm-sop/sso.git
-
 namespace: "sso"
 
 generatorOptions:
