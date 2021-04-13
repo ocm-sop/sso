@@ -6,8 +6,9 @@ generatorOptions:
   
 configMapGenerator:
 - name: dex-config
+  namespace: sso
   files:
-    - dex-config.yaml
+    - config.yaml
 
 resources:
   - github-creds.yaml
