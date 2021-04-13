@@ -19,10 +19,11 @@ spec:
       protocol: TCP
       port: 6443
       targetPort: grpc
+  loadBalancerIP:
+  type: LoadBalancer
+  sessionAffinity: None
+  externalTrafficPolicy: Cluster
   selector:
     app.kubernetes.io/instance: sso
     app.kubernetes.io/name: sso
     component: server
-  type: LoadBalancer
-  sessionAffinity: None
-  externalTrafficPolicy: Cluster

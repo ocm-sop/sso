@@ -1,22 +1,17 @@
-apiVersion: kustomize.config.k8s.io/v1beta1
-kind: Kustomization
+apiVersion: kustomize.config.k8s.io/v1alpha1
+kind: Component
 
 generatorOptions:
   disableNameSuffixHash: true
   
 configMapGenerator:
-- name: sso-config
+- name: dex-config
   files:
-    - config.yaml
+    - dex-config.yaml
 
 resources:
-  - namespace.yaml
-  - public-tls-secret.yaml
-  - public-tls.yaml
-  - internal-tls-secret.yaml
-  - internal-tls.yaml
-  - github-creds.yaml
-  - sa.yaml
+  - github-oauth-creds.yaml
+  - sso-sa.yaml
   - rbac.yaml
   - deployment.yaml
   - service.yaml
@@ -24,5 +19,4 @@ resources:
   # - route.yaml
 
 bases:
-  - oauth
   - dex-client

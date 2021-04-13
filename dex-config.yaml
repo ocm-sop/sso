@@ -1,4 +1,4 @@
-issuer: "https://sso.$(OCP_APPS_URL)"
+issuer: "https://sso.$(apps.openshift-cluster-name.base-domain.tld)"
 
 storage:
   type: kubernetes
@@ -47,7 +47,7 @@ connectors:
       config:
         clientID: $(GITHUB_CLIENT_ID)
         clientSecret: $(GITHUB_CLIENT_SECRET)
-        redirectURI: "https://sso.apps.$(OCP_APPS_URL)/callback"
+        redirectURI: "https://sso.apps.$(apps.openshift-cluster-name.base-domain.tld)/callback"
         orgs: 
             - name: open-cluster-management 
         loadAllGroups: true
@@ -55,8 +55,8 @@ connectors:
         useLoginAsID: false
 
 staticClients:
-    - id: "$(OCP_CLIENT_ID)"
+    - id: "$(SSO_HOST_CLIENT_ID)"
       redirectURIs:
-        - "https://oauth-openshift.$(OCP_APPS_URL)/oauth2callback/sso"
-      name: "$(OCP_CLIENT_ID)"
-      secret: "$(OCP_CLIENT_SECRET)"
+        - "https://oauth-openshift.$(apps.openshift-cluster-name.base-domain.tld)/oauth2callback/sso"
+      name: "$(SSO_HOST_CLIENT_ID)"
+      secret: "$(SSO_HOST_CLIENT_SECRET)"

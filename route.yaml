@@ -1,7 +1,7 @@
 apiVersion: route.openshift.io/v1
 kind: Route
 metadata:
-  name: sso-route
+  name: sso
   namespace: sso
 spec:
   host: sso.apps.openshift-cluster-name.base-domain.tld

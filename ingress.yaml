@@ -8,8 +8,8 @@ metadata:
     kubernetes.io/ingress.class: haproxy
     kubernetes.io/tls-acme: 'true'
     route.openshift.io/termination: reencrypt
-    cert-utils-operator.redhat-cop.io/destinationCA-from-secret: internal-sso-tls
-    cert-utils-operator.redhat-cop.io/certs-from-secret: sso-tls
+    cert-utils-operator.redhat-cop.io/destinationCA-from-secret: private-sso-tls
+    cert-utils-operator.redhat-cop.io/certs-from-secret: public-sso-tls
   labels:
     use-dns01-solver: "true"
 spec:
@@ -24,4 +24,4 @@ spec:
   tls:
     - hosts:
         - sso.apps.openshift-cluster-name.base-domain.tld
-      secretName: sso-tls
+      secretName: public-sso-tls

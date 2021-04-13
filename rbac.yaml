@@ -1,7 +1,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: sso
+  name: sso-sa
   labels:
     app: sso
 rules:
@@ -127,13 +127,13 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: sso-rb
+  name: sso-sa-rb
   labels:
     app: sso
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: sso
+  name: sso-sa
 subjects:
 - kind: ServiceAccount
   name: sso-sa           # Service account assigned to the dex pod, created above

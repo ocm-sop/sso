@@ -73,11 +73,11 @@ spec:
       volumes:
       - name: config
         configMap:
-          name: sso-config
+          name: dex-config
           defaultMode: 420
       - name: tls
         secret:
-          secretName: internal-sso-tls
+          secretName: private-sso-tls
           defaultMode: 420
   strategy:
     type: RollingUpdate
