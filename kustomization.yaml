@@ -10,13 +10,10 @@ configMapGenerator:
     - dex-config.yaml
 
 resources:
-  - github-oauth-creds.yaml
+  - github-creds.yaml
   - sso-sa.yaml
   - rbac.yaml
   - deployment.yaml
   - service.yaml
   - ingress.yaml
   # - route.yaml
-
-bases:
-  - dex-client
