@@ -19,8 +19,7 @@ spec:
       protocol: TCP
       port: 6443
       targetPort: grpc
-  loadBalancerIP:
-  type: LoadBalancer
+  type: ClusterIP
   sessionAffinity: None
   externalTrafficPolicy: Cluster
   selector:

@@ -54,9 +54,9 @@ connectors:
         teamNameField: slug
         useLoginAsID: false
 
-staticClients:
-    - id: "$(SSO_HOST_CLIENT_ID)"
-      redirectURIs:
-        - "https://oauth-openshift.$(apps.openshift-cluster-name.base-domain.tld)/oauth2callback/sso"
-      name: "$(SSO_HOST_CLIENT_ID)"
-      secret: "$(SSO_HOST_CLIENT_SECRET)"
+# staticClients:
+#     - id: "$(SSO_HOST_CLIENT_ID)"
+#       redirectURIs:
+#         - "https://oauth-openshift.$(apps.openshift-cluster-name.base-domain.tld)/oauth2callback/sso"
+#       name: "$(SSO_HOST_CLIENT_ID)"
+#       secret: "$(SSO_HOST_CLIENT_SECRET)"
