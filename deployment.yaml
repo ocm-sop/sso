@@ -28,7 +28,7 @@ spec:
       terminationGracePeriodSeconds: 30
       dnsPolicy: ClusterFirst
       containers:
-      - image: 'banzaicloud/dex-shim:0.6.0' #or quay.io/dexidp/dex:v2.26.0
+      - image: 'quay.io/dexidp/dex:v2.28.1' #or quay.io/dexidp/dex:v2.26.0
         name: dex
         command: ["/usr/local/bin/dex", "serve", "/etc/dex/cfg/config.yaml"]
         livenessProbe:
