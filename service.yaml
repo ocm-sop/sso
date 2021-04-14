@@ -21,7 +21,6 @@ spec:
       targetPort: grpc
   type: ClusterIP
   sessionAffinity: None
-  externalTrafficPolicy: Cluster
   selector:
     app.kubernetes.io/instance: sso
     app.kubernetes.io/name: sso
