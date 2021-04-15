@@ -14,7 +14,7 @@ metadata:
     use-dns01-solver: "true"
 spec:
   rules:
-    - host: sso.apps.openshift-cluster-name.base-domain.tld
+    - host: sso.$(APPS_DOMAIN)
       http:
         paths:
           - path: /
@@ -23,5 +23,5 @@ spec:
               servicePort: https
   tls:
     - hosts:
-        - sso.apps.openshift-cluster-name.base-domain.tld
+        - sso.$(APPS_DOMAIN)
       secretName: public-sso-tls

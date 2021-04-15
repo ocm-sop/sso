@@ -1,4 +1,4 @@
-issuer: "https://sso.$(apps.openshift-cluster-name.base-domain.tld)"
+issuer: "https://sso.$(APPS_DOMAIN)"
 
 storage:
   type: kubernetes
@@ -24,7 +24,7 @@ telemetry:
     http: "0.0.0.0:5558"
 
 expiry:
-  deviceRequests: "5m"  
+  deviceRequests: "30m"  
   signingKeys: "6h"
   idTokens: "24h"
   authRequests: "24h"
@@ -47,16 +47,9 @@ connectors:
       config:
         clientID: $(GITHUB_CLIENT_ID)
         clientSecret: $(GITHUB_CLIENT_SECRET)
-        redirectURI: "https://sso.apps.$(apps.openshift-cluster-name.base-domain.tld)/callback"
+        redirectURI: "https://sso.apps.$(APPS_DOMAIN)/callback"
         orgs: 
             - name: open-cluster-management 
         loadAllGroups: true
         teamNameField: slug
         useLoginAsID: false
-
-# staticClients:
-#     - id: "$(SSO_HOST_CLIENT_ID)"
-#       redirectURIs:
-#         - "https://oauth-openshift.$(apps.openshift-cluster-name.base-domain.tld)/oauth2callback/sso"
-#       name: "$(SSO_HOST_CLIENT_ID)"
-#       secret: "$(SSO_HOST_CLIENT_SECRET)"
