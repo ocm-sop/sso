@@ -3,9 +3,6 @@ kind: Component
 
 generatorOptions:
   disableNameSuffixHash: true
-
-components:
-  - github.com/ocm-sop/apps-domain-tls-cert?ref=main
   
 configMapGenerator:
 - name: dex-config
