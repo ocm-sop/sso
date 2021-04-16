@@ -20,4 +20,4 @@ resources:
   - deployment.yaml
   - service.yaml
   - ingress.yaml
-  # - route.yaml
+  - dex-client-controller.yaml

@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: dex-client-controller-manager
+  namespace: sso
+  labels:
+    app.kubernetes.io/instance: sso
+    app.kubernetes.io/name: sso
+    component: client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/instance: sso
+      app.kubernetes.io/name: sso
+      component: client
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/instance: sso
+        app.kubernetes.io/name: sso
+        component: client
+    spec:
+      restartPolicy: Always
+      serviceAccountName: sso-sa
+      schedulerName: default-scheduler
+      terminationGracePeriodSeconds: 10
+      securityContext: {}
+      containers:
+      - args:
+        - --enable-leader-election
+        - --dex-grpc=sso.sso.svc.cluster.local:6443
+        image: "quay.io/betsson-oss/dex-operator:v0.2.0"
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: liveness-port
+        name: manager
+        ports:
+        - containerPort: 9440
+          name: liveness-port
+        resources:
+          limits:
+            cpu: 200m
+            memory: 60Mi
+          requests:
+            cpu: 200m
+            memory: 60Mi
+        volumeMounts:
+        - mountPath: /etc/dex/tls
+          name: dex-grpc-client-cert
+        terminationMessagePolicy: File
+      volumes:
+      - name: dex-grpc-client-cert
+        secret:
+          defaultMode: 420
+          secretName: private-sso-tls
+      dnsPolicy: ClusterFirst
